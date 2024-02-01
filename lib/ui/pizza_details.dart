@@ -15,6 +15,7 @@ class PizzaDetails extends StatefulWidget {
   const PizzaDetails(this._pizza, this._cart, {Key? key}) : super(key: key);
   @override
   State<PizzaDetails> createState() => _PizzaDetailsState();
+
 }
 
 class _PizzaDetailsState extends State<PizzaDetails> {
@@ -29,7 +30,7 @@ class _PizzaDetailsState extends State<PizzaDetails> {
                 'Pizza ${widget._pizza.title}',
                 style: PizzeriaStyle.pageTitleTextStyle,
               ),
-              Image.asset(
+              Image.network(
                 'assets/images/pizza/${widget._pizza.image}',
                 height: 180,
               ),
@@ -52,8 +53,6 @@ class _PizzaDetailsState extends State<PizzaDetails> {
                 ],
               ),
               Text('Sauce sélectionnées', style: PizzeriaStyle.headerTextStyle,),
-              Text('Les sauces'),
-              Text('${widget._pizza.price} €'),
               _buildDropDownSauces(),
               TotalWidget(widget._pizza.total),
               BuyButtonWidget(widget._pizza, widget._cart),

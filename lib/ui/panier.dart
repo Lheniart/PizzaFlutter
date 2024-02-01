@@ -93,7 +93,7 @@ class _PanierState extends State<Panier> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Image.asset(
+        Image.network(
           'assets/images/pizza/${cartItem.pizza.image}',
           height: 180,
         ),
@@ -102,7 +102,7 @@ class _PanierState extends State<Panier> {
             Text(cartItem.pizza.title, style: PizzeriaStyle.priceTotalTextStyle,),
             Row(
               children: [
-                Text("${cartItem.pizza.price} €", style: PizzeriaStyle.itemPriceTextStyle,),
+                Text("${cartItem.pizza.total} €", style: PizzeriaStyle.itemPriceTextStyle,),
                 Row(
                   children: [
                     IconButton(
@@ -128,7 +128,7 @@ class _PanierState extends State<Panier> {
                 )
               ],
             ),
-            Text("Sous-Total : ${cartItem.pizza.price * cartItem.quantity} €", style: PizzeriaStyle.priceSubTotalStyle,),
+            Text("Sous-Total : ${cartItem.pizza.total * cartItem.quantity} €", style: PizzeriaStyle.priceTotalTextStyle),
           ],
         )
       ],
