@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:pizzeria/models/Menu.dart';
 import 'package:pizzeria/ui/pizza_list.dart';
+import 'package:pizzeria/ui/share/appbar_widget.dart';
+
+import 'models/cart.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,8 +27,11 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatelessWidget {
   String title;
+  Cart _cart;
 
-  MyHomePage({required this.title, Key? key}) : super(key: key);
+  MyHomePage({required this.title, Key? key}) :
+        _cart = Cart(),
+        super(key: key);
 
   final _menus = [
     Menu(1, 'Entrées', 'entree.png', Colors.lightGreen),
@@ -37,9 +43,7 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(title),
-      ),
+      appBar: AppBarWidget(title, _cart),
       body: Center(
         child: ListView.builder(
             itemCount: _menus.length,
@@ -48,7 +52,7 @@ class MyHomePage extends StatelessWidget {
                     case 2:
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => PizzaList()),
+                        MaterialPageRoute(builder: (context) => PizzaList(_cart)),
                       );
                       break;
                   }
